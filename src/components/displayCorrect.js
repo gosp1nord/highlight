@@ -1,55 +1,25 @@
-import Video from './ComponentVideo';
-import Article from './ComponentArticle';
-
-
-function WithVideo() {
+export function WithEstimateViews(WrappedComponent) {
   const Component = (item) => {
     if (item.views < 100) {
       return (
         <New>
-          <Video {...item}/>
+          <WrappedComponent {...item}/>
         </New>
       )
     } else if (item.views > 1000) {
       return (
         <Popular>
-          <Video {...item}/>
+          <WrappedComponent {...item}/>
         </Popular>
       )
     } else {
       return (
-        <Video {...item}/>
+        <WrappedComponent {...item}/>
       )
     }
   }
   return Component
 }
-export const VideoManage = WithVideo()
-
-
-function WithArticle() {
-  const Component = (item) => {
-    if (item.views < 100) {
-      return (
-        <New>
-          <Article {...item}/>
-        </New>
-      )
-    } else if (item.views > 1000) {
-      return (
-        <Popular>
-          <Article {...item}/>
-        </Popular>
-      )
-    } else {
-      return (
-        <Article {...item}/>
-      )
-    }
-  }
-  return Component
-}
-export const ArticleManage = WithArticle()
 
 function New(props) {
     return (

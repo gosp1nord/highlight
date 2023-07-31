@@ -1,18 +1,23 @@
 import React, { useState } from 'react';
-import { VideoManage, ArticleManage } from './displayCorrect';
+import { WithEstimateViews } from './displayCorrect';
+import Video from './ComponentVideo';
+import Article from './ComponentArticle';
 
 
 function List(props) {
+  let EstimateViews;
   return props.list.map(item => {
     switch (item.type) {
       case 'video':
+        EstimateViews = WithEstimateViews(Video)
         return (
-          <VideoManage {...item} />
+          <EstimateViews {...item} />
         );
 
       case 'article':
+        EstimateViews = WithEstimateViews(Article)
         return (
-          <ArticleManage {...item} />
+          <EstimateViews {...item} />
         );
     }
   });
